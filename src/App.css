@@ -1,0 +1,58 @@
+html{
+    height: 100vh;
+}
+
+body{
+    height: 100%;
+}
+
+.row{
+    min-height: 100%;
+}
+
+.main-parent{
+    height: 100%;
+}
+
+.parent{
+    height: 100%;
+}
+
+.image-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    order: 2;
+}
+
+#app{
+    height: 100%;
+}
+
+.image-wrapper{
+
+    width: 500px;
+    height: 500px;
+}
+
+.image-wrapper{
+    display: none;
+}
+
+.image-wrapper img{
+    width: 500px;
+    height: 100%;
+}
+
+.active{
+    display: flex;
+}
+
+.btn-prev{
+    position: relative;
+}
+
+.btn-next{
+    order: 3;
+}
