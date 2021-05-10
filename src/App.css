@@ -19,11 +19,12 @@ body{
 }
 
 .image-container{
+  position: relative;
+  overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: row;
-    order: 2;
 }
 
 #app{
@@ -31,26 +32,102 @@ body{
 }
 
 .image-wrapper{
-
-    width: 500px;
-    height: 500px;
-}
-
-.image-wrapper{
-    display: none;
+    order: 2;
+    width: 90%;
+    height: 60%;
+    z-index: 1;
+  overflow-x: hidden;
+  display: none;
+  overflow: hidden;
+    transition: transform 0.5s;
+    justify-content: space-between;    
 }
 
 .image-wrapper img{
-    width: 500px;
+    width: 33.33%;
     height: 100%;
+
+}
+
+.slide-left{
+  /*left: -90%;*/
+    overflow-x: hidden;    
+    -webkit-animation: slideIn 2s forwards;
+    -moz-animation: slideIn 2s forwards;
+    animation: slideIn 2s forwards;
+}
+
+.slide-right{
+  /*left: 90%;*/
+    overflow-x: hidden;    
+    -webkit-animation: slideOut 2s forwards;
+    -moz-animation: slideOut 2s forwards;
+    animation: slideOut 2s forwards;
+}
+
+@-webkit-keyframes slideIn {
+    
+    0% {
+      transform: translateX(900px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @-moz-keyframes slideIn {
+    0% {
+      transform: translateX(900px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideIn {
+    0% {
+      transform: translateX(900px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+      transform: translateX(-900px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @-moz-keyframes slideOut {
+    0% {
+      transform: translateX(-900px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideOut {
+    0% {
+      transform: translateX(-900px);
+    }
+    100% {
+      transform: translateX(0);
+    }
 }
 
 .active{
     display: flex;
 }
 
+.image-container > .btn-prev, .btn-next{
+  height: 100%;
+  width: 20%;
+    z-index: 3;
+}
+
 .btn-prev{
-    position: relative;
+  order: 1;
 }
 
 .btn-next{
