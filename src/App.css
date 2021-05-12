@@ -1,135 +1,107 @@
 html{
-    height: 100vh;
+  height: 100vh;
 }
 
 body{
-    height: 100%;
-}
-
-.row{
-    min-height: 100%;
-}
-
-.main-parent{
-    height: 100%;
-}
-
-.parent{
-    height: 100%;
-}
-
-.image-container{
-  position: relative;
-  overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-#app{
-    height: 100%;
-}
-
-.image-wrapper{
-    order: 2;
-    width: 90%;
-    height: 60%;
-    z-index: 1;
-  overflow-x: hidden;
-  display: none;
-  overflow: hidden;
-    transition: transform 0.5s;
-    justify-content: space-between;    
-}
-
-.image-wrapper img{
-    width: 33.33%;
-    height: 100%;
-
-}
-
-.slide-left{
-  /*left: -90%;*/
-    overflow-x: hidden;    
-    -webkit-animation: slideIn 2s forwards;
-    -moz-animation: slideIn 2s forwards;
-    animation: slideIn 2s forwards;
-}
-
-.slide-right{
-  /*left: 90%;*/
-    overflow-x: hidden;    
-    -webkit-animation: slideOut 2s forwards;
-    -moz-animation: slideOut 2s forwards;
-    animation: slideOut 2s forwards;
-}
-
-@-webkit-keyframes slideIn {
-    
-    0% {
-      transform: translateX(900px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @-moz-keyframes slideIn {
-    0% {
-      transform: translateX(900px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes slideIn {
-    0% {
-      transform: translateX(900px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-}
-
-@keyframes slideOut {
-    0% {
-      transform: translateX(-900px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @-moz-keyframes slideOut {
-    0% {
-      transform: translateX(-900px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes slideOut {
-    0% {
-      transform: translateX(-900px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-}
-
-.active{
-    display: flex;
-}
-
-.image-container > .btn-prev, .btn-next{
   height: 100%;
-  width: 20%;
-    z-index: 3;
+  overflow: hidden;
 }
 
-.btn-prev{
-  order: 1;
+
+.main {
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
 }
 
-.btn-next{
-    order: 3;
+.swiper {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: visible;
+  transition-property: transform;
+  will-change: transform;
+  height: 100%;
+  align-items: center;
+}
+
+img{
+  padding: 0 25px 0 25px;
+}
+
+.main h1{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.move {
+  display: flex;
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  top: 0%;
+  font-size: 36px;
+
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 0;
+  transition-timing-function: ease-out;
+  transition: 0.5s;
+}
+
+.back:hover, .next:hover{
+
+  transition-timing-function: ease-in;
+  transition: 0.5s;
+  background-color: rgba(255, 255, 255, 0.8);  
+}
+
+.back {
+  background-color: transparent;
+  --bs-gutter-x: 0;
+  left: 0px;
+}
+.next {
+  background-color: transparent;
+  --bs-gutter-x: 0;
+  right: 0px;
+}
+
+.rectangle-wrapper{
+  position: absolute;
+  top: 83%;
+  left: 30%;
+
+  width: 40%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rectangle{
+  background-color: #fff;
+  height: 15%;
+  width: 10%;
+ 
+}
+
+@media (max-width: 1024px) {
+  .back, .next{
+    visibility: hidden;
+  }
+
+  img{
+    height: 45%;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+  img{
+    padding: 0 5px 0 5px;
+    height: 35%;
+  }
 }
