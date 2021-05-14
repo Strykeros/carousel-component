@@ -4,6 +4,7 @@ import React from "react";
 const IMG_WIDTH = 100;
 const IMG_HEIGHT = 100;
 
+
 class Slide extends React.Component{
 
   constructor(props){
@@ -13,12 +14,13 @@ class Slide extends React.Component{
   currentSlide = 0;
     lastTouch = 0;
     state = {
-       imgs: ["resources/img1.jpg", "resources/img2.jpg", "resources/img3.jpg", "resources/img4.jpg", "resources/img5.jpg",
-       "resources/img6.jpg", "resources/img7.jpg", "resources/img8.jpg", "resources/img9.jpg", "resources/img10.jpg", "resources/img11.jpg",
-       "resources/img12.jpg"],
        currentIndex: 0,
        movement: 0,
     };
+
+    importImages(imgs) {
+      return imgs.keys().map(imgs);
+    }
 
     handleMovementEnd = () => {
         const { movement, currentIndex } = this.state;
@@ -144,8 +146,8 @@ class Slide extends React.Component{
     }
 
     render() {
-        const { movement, transitionDuration, imgs, currentIndex } = this.state;
-        
+        const { movement, transitionDuration, currentIndex } = this.state;
+        const images = this.importImages(require.context('../resources', false, /\.(png|jpe?g|svg)$/));        
         return (
 
             <div
@@ -168,7 +170,7 @@ class Slide extends React.Component{
                 }}
                 >
 
-                {imgs.map((src) => {
+                {images.map((src) => {
                     return <img key={src} src={src} width="33.33%" height="70%"/>
                 })}
                 </div>
