@@ -30,6 +30,7 @@ img{
 
 .main h1{
   position: absolute;
+  top: 5%;
   width: 100%;
   text-align: center;
   color: #fff;
@@ -53,7 +54,7 @@ img{
 }
 
 .back:hover, .next:hover{
-
+  color: #000;
   transition-timing-function: ease-in;
   transition: 0.5s;
   background-color: rgba(255, 255, 255, 0.8);  
@@ -61,11 +62,13 @@ img{
 
 .back {
   background-color: transparent;
+  color: transparent;
   --bs-gutter-x: 0;
   left: 0px;
 }
 .next {
   background-color: transparent;
+  color: transparent;
   --bs-gutter-x: 0;
   right: 0px;
 }
@@ -87,6 +90,10 @@ img{
   height: 15%;
   width: 10%;
  
+}
+
+.active{
+  background-color: rgb(128,128,128);
 }
 
 @media (max-width: 1024px) {

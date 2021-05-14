@@ -6,6 +6,11 @@ const IMG_HEIGHT = 100;
 
 class Slide extends React.Component{
 
+  constructor(props){
+    super(props);
+  }
+
+  currentSlide = 0;
     lastTouch = 0;
     state = {
        imgs: ["resources/img1.jpg", "resources/img2.jpg", "resources/img3.jpg", "resources/img4.jpg", "resources/img5.jpg",
@@ -23,7 +28,7 @@ class Slide extends React.Component{
         const endingIndex = endPosition - endPartial;
         const deltaInteger = endingIndex - currentIndex;
       
-        let nextIndex = endingIndex;
+          let nextIndex = endingIndex;
 
         if (deltaInteger >= 0) {
             if (endPartial >= 0.1) {
@@ -34,10 +39,12 @@ class Slide extends React.Component{
             nextIndex = currentIndex - Math.abs(deltaInteger);
             if (endPartial > 0.9) {
               nextIndex += 1;
+
             }
         }
-          
+        
         this.slideTo(nextIndex, Math.min(0.5, 1 - Math.abs(endPartial)));
+          this.selectedRectangle();     
     };
 
     handleWheel = (e) => {
@@ -53,9 +60,7 @@ class Slide extends React.Component{
     handleTouchMove = e => {
         const delta = this.lastTouch - e.nativeEvent.touches[0].clientX;
         this.lastTouch = e.nativeEvent.touches[0].clientX;
-    
         this.handleMovement(delta);
-      
     };
 
     slideTo = (index, duration) => {
@@ -64,6 +69,7 @@ class Slide extends React.Component{
           movement: index * IMG_WIDTH,
           transitionDuration: `${duration}s`,
         });
+        this.currentSlide = index;
       
         this.transitionTimeout = setTimeout(() => {
           this.setState({ transitionDuration: "0s" });
@@ -81,36 +87,53 @@ class Slide extends React.Component{
     };
 
     handleMovement = (delta) => {
+
         clearTimeout(this.transitionTimeout);
-      
+
         this.setState((state) => {
-          const maxLength = state.imgs.length - 1;
-      
-          let nextMovement = state.movement + delta;
-      
+          const maxLength = IMG_WIDTH * 3;
+          let nextMovement = state.movement + delta / 6.5;      
+
           if (nextMovement < 0) {
             nextMovement = 0;
+          }      
+
+          if (nextMovement > maxLength) {
+            nextMovement = maxLength; 
           }
-      
-          if (nextMovement > maxLength * IMG_WIDTH) {
-            nextMovement = maxLength * IMG_WIDTH;
-          }
-      
+ 
           return {
+
             movement: nextMovement,
             transitionDuration: "0s",
           };
         });
     };
 
+    selectedRectangle(){
+      let rect = document.getElementsByClassName("rectangle");
+      for(let i = 0; i < rect.length; i++){
+        rect[i].classList.remove("active");
+      }
+      rect[this.currentSlide].className += " active";
+
+    }
+
     rectangle(){
       const rectangles = [];
       for(let i = 0; i < 4; i++){
-        rectangles.push(<div className="rectangle"
+       
+        rectangles.push(<div className={`rectangle ${i === 0 && 'active'}`}
           onClick={() => {
             this.slideTo(i, 0.5);
+            this.setState({ selected: i });
+            this.selectedRectangle();
         }}        
+        style={{
+          cursor: "pointer",
+      }}
         ></div>)
+
       }
 
       return (
@@ -122,8 +145,6 @@ class Slide extends React.Component{
 
     render() {
         const { movement, transitionDuration, imgs, currentIndex } = this.state;
-        const maxLength = imgs.length - 1;
-        const maxMovement = maxLength * IMG_WIDTH;
         
         return (
 
@@ -159,12 +180,13 @@ class Slide extends React.Component{
                     }}
                     onClick={() => {
                         this.slideTo(currentIndex - 1, 0.5);
+                        this.selectedRectangle();
                     }}
                     >
                     ❮
                     </button>
                 )}
-               { movement !== maxMovement && (
+               { this.currentSlide !== 3 && (
                     <button
                     className="next move"
                     style={{
@@ -172,16 +194,14 @@ class Slide extends React.Component{
                     }}
                     onClick={() => {
                         this.slideTo(currentIndex + 1, 0.5);
-                        console.log(maxMovement);
+                        this.selectedRectangle();
                     }}
                     >
                     ❯
                     </button>
-
                 )}
               {this.rectangle()}
-            </div>
-            
+            </div>  
         );
     }
 }

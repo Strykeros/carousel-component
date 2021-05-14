@@ -5,8 +5,8 @@ import ele from "../components/constants.js"
 const images = importImages(require.context('../resources', false, /\.(png|jpe?g|svg)$/));
 
 function CoreApp() {
-    return (<div className=/*"container-fluid p-0 */"main-parent">
-        <div className =/*"row */"parent">  
+    return (<div className="main-parent">
+        <div className ="parent">  
             <div className= "image-container">
                 {AppContent()}              
             </div>
@@ -17,7 +17,7 @@ function CoreApp() {
 }
 
 function AppContent(){
-    return <Slide />
+    return <Slide />;
 }
 
 function importImages(imgs) {
