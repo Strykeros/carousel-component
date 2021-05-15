@@ -1,6 +1,6 @@
 # Welcome to Carousel-component!
 A small image gallery with mobile support.
-## Prerequisites
+## Project prerequisites
 
 Dependencies:
 
