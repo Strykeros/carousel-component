@@ -40,5 +40,5 @@ Starting the project:
 
 1. In the cloned project, that is opened with Visual Studio Code, at the top of the window, click on **Terminal** and then select **New Terminal**;
 2. A new terminal window should pop up. In the terminal, type `npm run serve`;
-3. Once you see a log in the terminal that says `Project is running at http://localhost:3000/`, open your preferred browser, and in the URL address bar, type in **http://localhost:3000/**.
+3. Once you see a log, in the terminal, that says `Project is running at http://localhost:3000/`, open your preferred browser, and in the URL address bar, type in **http://localhost:3000/**.
 4. Done!
