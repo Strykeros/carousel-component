@@ -86,14 +86,14 @@ img{
 }
 
 .rectangle{
-  background-color: #fff;
+  background-color: rgb(128,128,128);
   height: 15%;
   width: 10%;
  
 }
 
 .active{
-  background-color: rgb(128,128,128);
+  background-color: #fff;
 }
 
 @media (max-width: 1024px) {

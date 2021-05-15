@@ -93,11 +93,11 @@ class Slide extends React.Component{
         clearTimeout(this.transitionTimeout);
 
         this.setState((state) => {
-          const maxLength = IMG_WIDTH * 3;
+          const maxLength = IMG_WIDTH * 3.09;
           let nextMovement = state.movement + delta / 6.5;      
 
           if (nextMovement < 0) {
-            nextMovement = 0;
+            nextMovement = -7;
           }      
 
           if (nextMovement > maxLength) {
