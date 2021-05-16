@@ -7,7 +7,8 @@ Dependencies:
 1. Bootstrap: 5.0.1 or later;
 2. React: 17.0.2 or later;
 3. ReactDOM: 17.0.2 or later;
-4. A LocalHost port 3000 available for starting the project.
+4. Node.js: 12.6.3 or later;
+5. A LocalHost port 3000 available for starting the project.
 
 Dev dependencies:
 
