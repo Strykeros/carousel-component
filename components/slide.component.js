@@ -19,11 +19,12 @@ class Slide extends React.Component{
        movement: 0,
     };
 
+
     importImages(imgs) {
       return imgs.keys().map(imgs);
     }
 
-    handleMovementEnd(){
+    handleMovementEnd = () => {
         const { movement, currentIndex } = this.state;
       
         const endPosition = movement / IMG_WIDTH;
@@ -47,27 +48,26 @@ class Slide extends React.Component{
         }
         
         this.slideTo(nextIndex, Math.min(0.5, 1 - Math.abs(endPartial)));
-        this.selectedRectangle();     
+          this.selectedRectangle();     
     };
 
-  
-    handleWheel(e){
+    handleWheel = (e) => {
         clearTimeout(this.wheelTimeout);
         this.handleMovement(e.deltaX);
         this.wheelTimeout = setTimeout(() => this.handleMovementEnd(), 100);
     };
 
-    handleTouchStart(e){
+    handleTouchStart = (e) => {
         this.lastTouch = e.nativeEvent.touches[0].clientX;
     };
 
-    handleTouchMove(e) {
+    handleTouchMove = e => {
         const delta = this.lastTouch - e.nativeEvent.touches[0].clientX;
         this.lastTouch = e.nativeEvent.touches[0].clientX;
         this.handleMovement(delta);
     };
 
-    slideTo(index, duration){
+    slideTo = (index, duration) => {
         this.setState({
           currentIndex: index,
           movement: index * IMG_WIDTH,
@@ -80,17 +80,17 @@ class Slide extends React.Component{
         }, duration * 100);
     };
       
-    componentWillUnmount(){
+    componentWillUnmount = () => {
         clearTimeout(this.transitionTimeout);
     };
       
 
-    handleTouchEnd(){
+    handleTouchEnd = () => {
         this.handleMovementEnd();
         this.lastTouch = 0;
     };
 
-    handleMovement(delta){
+    handleMovement = (delta) => {
 
         clearTimeout(this.transitionTimeout);
 
