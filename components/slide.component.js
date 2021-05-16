@@ -20,7 +20,7 @@ class Slide extends React.Component{
     };
 
 
-    importImages(imgs) {
+    importImages = (imgs) => {
       return imgs.keys().map(imgs);
     }
 
@@ -61,7 +61,7 @@ class Slide extends React.Component{
         this.lastTouch = e.nativeEvent.touches[0].clientX;
     };
 
-    handleTouchMove = e => {
+    handleTouchMove = (e) => {
         const delta = this.lastTouch - e.nativeEvent.touches[0].clientX;
         this.lastTouch = e.nativeEvent.touches[0].clientX;
         this.handleMovement(delta);
@@ -114,7 +114,7 @@ class Slide extends React.Component{
         });
     };
 
-    selectedRectangle(){
+    selectedRectangle = () => {
       let rect = document.getElementsByClassName("rectangle");
       for(let i = 0; i < rect.length; i++){
         rect[i].classList.remove("active");
@@ -123,7 +123,7 @@ class Slide extends React.Component{
 
     }
 
-    rectangle(){
+    rectangle = () => {
       const rectangles = [];
       for(let i = 0; i < 4; i++){
        
